@@ -10,7 +10,8 @@ SequenceOfOperations::SequenceOfOperations(QWidget *parent) :
     ui->setupUi(this);
 }
 
-void SequenceOfOperations::PrintExprInTheWin(int op1, int op2, char op, int i)
+//used in the "Calculate" function
+void SequenceOfOperations::PrintExprInTheWin(float op1, float op2, char op, int i)
 {
     QString prevText = ui->label->text(),
             num = QString::number(i) + ". ",
@@ -22,17 +23,18 @@ void SequenceOfOperations::PrintExprInTheWin(int op1, int op2, char op, int i)
     ui->label->setText(res);
 }
 
-int SequenceOfOperations::Calculate(string s)
+//returning solution + printing steps of calculating solution in the second window
+float SequenceOfOperations::Calculate(string s)
 {
-    stack <int> storage;
+    stack <float> storage;
     bool state = 1;
     ui->label->setText("====History====");
     int count = 1;
     for (int i = 0; i < s.size() && state; i++)
     {
         if (isdigit(s[i])) {
-            int n = s[i] - 48; // ascii shit
-            while (s[++i] != ',') {
+            int n = s[i] - 48; // ascii thing
+            while (s[++i] != ',') { //moving utill its not a spacer ","
                 if (i < s.size()) {
                     n *= 10;
                     n += (s[i] - 48);
@@ -42,16 +44,17 @@ int SequenceOfOperations::Calculate(string s)
             storage.push(n);
         }
         else if (s[i] == '+' || s[i] == '-' || s[i] == '/' || s[i] == '*') {
-            int op1 = storage.top();
+            float op1 = storage.top(); //getting second operand
             storage.pop();
-            int op2 = storage.top();
+            float op2 = storage.top(); //getting first operand
             storage.pop();
 
-            if (s[i] == '*') {
+            if (s[i] == '*') { // if the operation is multiplication
                 PrintExprInTheWin(op1, op2, '*', count);
                 op1 *= op2;
             }
-            else if (s[i] == '/') {
+            else if (s[i] == '/') { // if the operation is division
+                //checking if the second operand is 0
                 if (op1) {
                     PrintExprInTheWin(op1, op2, '/', count);
                     op1 = op2 / op1;
@@ -59,17 +62,16 @@ int SequenceOfOperations::Calculate(string s)
                 else {
                     ui->label->setText("\nCANNOT DIVIDE BY ZERO");
                     state = false;
-                    return 999999999;
+                    return 99999.9;
                 }
             }
-            if (s[i] == '+') {
+            if (s[i] == '+') {  // if the operation is additon
                 PrintExprInTheWin(op1, op2, '+', count);
                 op1 += op2;
             }
-            else if (s[i] == '-') {
+            else if (s[i] == '-') { // if the operation is substraction
                 PrintExprInTheWin(op1, op2, '-', count);
                 op1 = op2 - op1;
-
             }
             storage.push(op1);
             ++count;
@@ -77,11 +79,13 @@ int SequenceOfOperations::Calculate(string s)
     }
     if (state){
         QString prevText = ui->label->text(),
-                newText = "\nRESULT\n",
+                newText = "\n====RESULT====\n",
                 num = QString::number(storage.top());
-        ui->label->setText(prevText + newText + num);
+        ui->label->setText(prevText + newText + num); //printing result
         return storage.top();
     }
+    else
+        return 99999.9;
 }
 
 SequenceOfOperations::~SequenceOfOperations()

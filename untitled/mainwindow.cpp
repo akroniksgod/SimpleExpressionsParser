@@ -4,11 +4,15 @@
 #include <stack>
 using namespace std;
 
+size_t fontSize = 26; //declaring size of font
+size_t toCompare = 30; // size of the full string
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //connecting keys to slots
     connect (ui->buttn0, SIGNAL(clicked()), this, SLOT(Digits()));
     connect (ui->buttn1, SIGNAL(clicked()), this, SLOT(Digits()));
     connect (ui->buttn2, SIGNAL(clicked()), this, SLOT(Digits()));
@@ -27,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect (ui->buttnOpenBr, SIGNAL(clicked()), this, SLOT(Operations()));
     connect (ui->buttnClosingBr, SIGNAL(clicked()), this, SLOT(Operations()));
 
+    //making operations checkable to be able to add them to string
     ui->buttnPlus->setCheckable(true);
     ui->buttnMinus->setCheckable(true);
     ui->buttnMulti->setCheckable(true);
@@ -41,25 +46,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-bool MainWindow::isOperand(char op)
-{
-    switch (op)
-    {
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-    case '6':
-    case '7':
-    case '8':
-    case '9':
-        return true;
-    }
-    return false;
-}
-
+//checking if a symbol is operation
 bool MainWindow::isOperator(char op)
 {
     switch (op)
@@ -68,22 +55,23 @@ bool MainWindow::isOperator(char op)
     case '/':
     case '+':
     case '-':
-        return true;
-    default:
-        return false;
+        return true;    
     }
     return false;
 }
 
+// the function is needed for checking if an input string contains proper symbols
+// such as {0...9} or {+, -, *, /, (, )}; USED IN the "Parsing" method
 bool MainWindow::Check(string result)
 {
     for (int i = 0; i < result.size(); i++) {
-        if (!isOperand(result[i]) && !isOperator(result[i]) && result[i] != '(' && result[i] != ')')
+        if (!isdigit(result[i]) && !isOperator(result[i]) && result[i] != '(' && result[i] != ')')
                         return false;
     }
     return true;
 }
 
+// the method defines what precedence each operation has
 int MainWindow::Priority(char op)
 {
     switch (op)
@@ -105,6 +93,7 @@ int MainWindow::Priority(char op)
     }
 }
 
+// the method removes comma at the end of the string
 string MainWindow::removeLastEl(string result)
 {
     string tmp;
@@ -113,39 +102,40 @@ string MainWindow::removeLastEl(string result)
     return tmp;
 }
 
+//converting infix to postfix notation using stack
 string MainWindow::toPostfix(string s)
 {
     stack <char> stk;
-    string result;// = "12,+,4,*,3,+";
+    string result;
     int k = 0; // iterator in "for each" loop
-    bool flag = true;
+    bool flag = true; // declaring flag to count digits in a number
     for (char CurrVar : s) {
         if (isdigit(CurrVar)) {
             result += CurrVar;              //
             if (k < s.size() - 1 && flag)   // checking if a number is more than 9
-                if (!isdigit(s[k + 1])) {   //
+                if (!isdigit(s[k + 1])) {   // if the next thing isn't a number than we put comma as a spacer
                     flag = false;           //
                     result += ',';          //
                 }                           //
                 else                        //
-                    flag = true;            //
+                    flag = true;            // else we're fine
             if (k == s.size() - 1) // in case if the last symbol in the string is a digit
-                result += ',';
+                result += ',';     // we put spacer
         }
         else {
             if (isOperator(CurrVar)) {
-                int CurrPrior = Priority(CurrVar), StackPrior = 0;
+                int CurrPrior = Priority(CurrVar), StackPrior = 0;  //checking priority of the current variable
                 if (!stk.empty())
-                    StackPrior = Priority(stk.top());
+                    StackPrior = Priority(stk.top()); // checking priority of the variable on top of stack
                 if (!stk.empty() && (StackPrior < CurrPrior))
                     stk.push(CurrVar);
                 else {
-                    while (!stk.empty() && (StackPrior >= CurrPrior)) {
-                        result += stk.top();
-                        result += ',';  //
+                    while (!stk.empty() && (StackPrior >= CurrPrior)) { // if there is/are elements
+                        result += stk.top();                            // having greater precedence on top of stack
+                        result += ',';                                  // then we put them in to the result string
                         stk.pop();
                         if(!stk.empty())
-                            StackPrior = Priority(stk.top());
+                            StackPrior = Priority(stk.top());          // resetting priority of the top element of stack
                     }
                     stk.push(CurrVar);
                 }
@@ -153,8 +143,8 @@ string MainWindow::toPostfix(string s)
             if (CurrVar == '(')
                 stk.push(CurrVar);
             if (CurrVar == ')') {
-                while (stk.top() != '(') {
-                    result += stk.top();
+                while (stk.top() != '(') {          // moving untill the element is not an open bracket
+                    result += stk.top();            // putting to the result string operators from stack
                     result += ',';  //
                     stk.pop();
                 }
@@ -174,9 +164,10 @@ string MainWindow::toPostfix(string s)
     return result;
 }
 
+// method which returns the string converted to Postfix Polish notation
 string MainWindow::Parsing(QString s)
 {
-    string converted = s.toStdString();
+    string converted = s.toStdString();    
     bool state;
     Check(converted) ? state = 1 : state = 0;
     if (state) {
@@ -187,40 +178,57 @@ string MainWindow::Parsing(QString s)
         return "ERR";
 }
 
+//the event that launches the second window where a user is able to see maths operations made
 void MainWindow::on_buttnEqual_clicked()
 {
-    ui->statusbar->showMessage("'=' was pressed!");
-    string postFixNotation = Parsing(ui->expr->text());
-    SequenceOfOperations w;
+    ui->statusbar->showMessage("'=' WAS PRESSED!");
+    string postFixNotation = Parsing(ui->expr->text()); //getting postfix notation
+    SequenceOfOperations w;                             //creating an object of the second window
     w.setWindowTitle("Последовательность операций");
     w.setModal(true);
-    int res = w.Calculate(postFixNotation);
+    float res = w.Calculate(postFixNotation);           //getting the result of the expression
     QString toWrite = QString::number(res);
-    ui->expr->setText(toWrite);
+    QString prev = ui->expr->text();
+    prev += "=";
+    ui->expr->setText(prev + toWrite);                  //printing the result in the first window
     w.exec();
 }
 
+// the slot is for adding numbers to the string that a user observes
+void MainWindow::Digits()
+{
+    QPushButton *key = (QPushButton*)sender();
+    QString prevNum = ui->expr->text() + key->text();    
+    QFont font ("Segoe UI", fontSize, QFont::Bold);
+    if (prevNum.size() > toCompare){      // if there are too many characters
+            --fontSize;                   // we make font smaller
+            toCompare += 1;      
+    }
+
+    if (prevNum.at(0) == '0'){          // delete first zero in the input string
+        QString tmp;
+        for (int i = 1; i < prevNum.size(); i++)
+            tmp += prevNum.at(i);
+        prevNum = tmp;
+    }    
+    font.setPointSize(fontSize);
+    ui->expr->setFont(font);
+    ui->expr->setText(prevNum);
+}
+
+// the slot is used in the "Operations" slot
 void MainWindow::Update(QPushButton *&key, QChar op)
 {
     QString prev = ui->expr->text();
     prev += op;
     ui->expr->setText(prev);
+    QString toStatusBar = op;
+    toStatusBar += " WAS PRESSED!";
+    ui->statusbar->showMessage(toStatusBar);
     key->setChecked(false);
 }
 
-void MainWindow::Digits()
-{
-    QPushButton *key = (QPushButton*)sender();
-    QString prevNum = ui->expr->text() + key->text();
-    if (prevNum.at(0) == '0'){
-        QString tmp;
-        for (int i = 1; i < prevNum.size(); i++)
-            tmp += prevNum.at(i);
-        prevNum = tmp;
-    }
-    ui->expr->setText(prevNum);
-}
-
+// the slot is for adding operations symbols to the string that a user observes
 void MainWindow::Operations()
 {
     QPushButton *key = (QPushButton*)sender();
@@ -246,17 +254,25 @@ void MainWindow::Operations()
     }
 }
 
+// the event is for clicking on delete key
 void MainWindow::on_buttnDelete_clicked()
 {
     ui->buttnPlus->setChecked(false);
     ui->buttnDiv->setChecked(false);
     ui->buttnMulti->setChecked(false);
     ui->buttnMinus->setChecked(false);
+
+    QFont font ("Segoe UI", 26, QFont::Bold);   //setting font to normal size
+    font.setPointSize(26);                      //
+    ui->expr->setFont(font);                    //
+
     ui->expr->setText("0");
     ui->buttnDelete->setChecked(false);
     ui->statusbar->clearMessage();
+
 }
 
+// the event is for clicking on backspace key
 void MainWindow::on_buttnBackspace_clicked()
 {
     ui->buttnPlus->setChecked(false);
@@ -264,10 +280,27 @@ void MainWindow::on_buttnBackspace_clicked()
     ui->buttnMulti->setChecked(false);
     ui->buttnMinus->setChecked(false);
     QString prev = ui->expr->text();
-    prev.chop(1);
-    if (prev.isEmpty())
-        prev += "0";
+    prev.chop(1);                                   // removing 1 characher in the string
+    if (prev.isEmpty())                             //if we're deleting all characters
+        prev += "0";                                // then the machine to print 0
     ui->expr->setText(prev);
     ui->buttnBackspace->setChecked(false);
     ui->statusbar->clearMessage();
+
+    QString curr = ui->expr->text();
+    QFont font ("Segoe UI", fontSize, QFont::Bold);
+    if (toCompare > 30 && curr.size() < toCompare){
+        ++fontSize;
+        toCompare -= 1;
+        font.setPointSize(fontSize);
+        ui->expr->setFont(font);
+     }
+
+}
+
+//here i wanted to add opening of external links but it doesn't work on my PC
+void MainWindow::on_pushButton_4_clicked()
+{    
+    QString link = "https://habr.com/ru/post/100869/";    
+    QDesktopServices::openUrl(QUrl(link));
 }

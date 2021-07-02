@@ -18,10 +18,10 @@ public:
     explicit SequenceOfOperations(QWidget *parent = nullptr);
     ~SequenceOfOperations();
 
-    int Calculate(std::string s);
+    float Calculate(std::string s);
 
 private slots:
-    void PrintExprInTheWin(int op1, int op2, char op, int i);
+    void PrintExprInTheWin(float op1, float op2, char op, int i);
 
 private:
     Ui::SequenceOfOperations *ui;
