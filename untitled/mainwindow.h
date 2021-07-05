@@ -36,10 +36,16 @@ private slots:
     bool Check(std::string result);
     int Priority(char op);
     std::string removeLastEl(std::string result);
-    std::string toPostfix(std::string s);    
+    std::string toPostfix(std::string s);
+
+    void ClearVariables();
+
+    float getValues();
+    std::string convertString(std::string newStr);
+
     std::string Parsing(QString s);
 
-    void on_pushButton_4_clicked();
+
 
 private:
     Ui::MainWindow *ui;

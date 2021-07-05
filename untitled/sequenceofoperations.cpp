@@ -1,6 +1,7 @@
 #include "sequenceofoperations.h"
 #include "ui_sequenceofoperations.h"
 #include <stack>
+#include <cmath>
 using namespace std;
 
 SequenceOfOperations::SequenceOfOperations(QWidget *parent) :
@@ -43,11 +44,16 @@ float SequenceOfOperations::Calculate(string s)
             --i;
             storage.push(n);
         }
-        else if (s[i] == '+' || s[i] == '-' || s[i] == '/' || s[i] == '*') {
+        else if (s[i] == '+' || s[i] == '-' || s[i] == '/' || s[i] == '*' || s[i] == '^') {
             float op1 = storage.top(); //getting second operand
             storage.pop();
             float op2 = storage.top(); //getting first operand
             storage.pop();
+
+            if (s[i] == '^'){
+                PrintExprInTheWin(op1, op2, '^', count);
+                op1 = pow(op2, op1);
+            }
 
             if (s[i] == '*') { // if the operation is multiplication
                 PrintExprInTheWin(op1, op2, '*', count);
