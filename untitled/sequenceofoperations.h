@@ -18,10 +18,12 @@ public:
     explicit SequenceOfOperations(QWidget *parent = nullptr);
     ~SequenceOfOperations();
 
-    float Calculate(std::string s);
-
+    float Calculate(std::string s, bool DegOrRad);
+    bool isDigit(char op);
 private slots:
     void PrintExprInTheWin(float op1, float op2, char op, int i);
+    void PrintExprInTheWin(float op1, QString op, int i);
+    void PrintExprInTheWin(float op1, float op2, QString op, int i);
 
 private:
     Ui::SequenceOfOperations *ui;

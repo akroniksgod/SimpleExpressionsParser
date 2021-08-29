@@ -6,12 +6,15 @@ using namespace std;
 
 size_t fontSize = 26; //declaring size of font
 size_t toCompare = 30; // size of the full string
+bool Deg = 1;
 
+//constr
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     //connecting keys to slots
     connect (ui->buttn0, SIGNAL(clicked()), this, SLOT(Digits()));
     connect (ui->buttn1, SIGNAL(clicked()), this, SLOT(Digits()));
@@ -34,6 +37,30 @@ MainWindow::MainWindow(QWidget *parent)
     connect (ui->buttnPow, SIGNAL(clicked()), this, SLOT(Operations()));
     ui->buttnPow->setCheckable(true);
 
+    connect (ui->buttnDot, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnDot->setCheckable(true);
+    connect (ui->buttnSin, SIGNAL(clicked()), this, SLOT(Operations()));
+    connect (ui->buttnCos, SIGNAL(clicked()), this, SLOT(Operations()));
+    connect (ui->buttnTan, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnSin->setCheckable(true);
+    ui->buttnCos->setCheckable(true);
+    ui->buttnTan->setCheckable(true);
+    connect (ui->buttnExp, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnExp->setCheckable(true);
+    connect (ui->buttnRev, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnRev->setCheckable(true);
+    connect (ui->buttnMod, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnMod->setCheckable(true);
+    connect (ui->buttnLg, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnLg->setCheckable(true);
+    connect (ui->buttnLog, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnLog->setCheckable(true);
+    connect (ui->buttnInt, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnInt->setCheckable(true);
+
+    connect (ui->buttnLn, SIGNAL(clicked()), this, SLOT(Operations()));
+    ui->buttnLn->setCheckable(true);
+
     //making operations checkable to be able to add them to string
     ui->buttnPlus->setCheckable(true);
     ui->buttnMinus->setCheckable(true);
@@ -42,6 +69,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->buttnOpenBr->setCheckable(true);
     ui->buttnClosingBr->setCheckable(true);
+
+    on_DegOn_toggled(true);
+    ui->buttnInv->setCheckable(true);
 }
 
 MainWindow::~MainWindow()
@@ -49,19 +79,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//checking if a sybmbol is digit
+bool MainWindow::isDigit(char op)
+{
+    string str = "0123456789.";
+    if (str.find(op) != -1)
+        return true;
+    return false;
+}
+
 //checking if a symbol is operation
 bool MainWindow::isOperator(char op)
 {
-    switch (op)
-    {
-    case '*':
-    case '/':
-    case '+':
-    case '-':
-    case '^':
-        return true;    
-    }
-    return false;
+    string str = "*/+-^SINCOTAEXPRVMDLGJ";
+    if (str.find(op) != -1)
+        return true;
+    return false;    
 }
 
 // the function is needed for checking if an input string contains proper symbols
@@ -69,7 +102,7 @@ bool MainWindow::isOperator(char op)
 bool MainWindow::Check(string result)
 {
     for (int i = 0; i < result.size(); i++) {
-        if (!isdigit(result[i]) && !isOperator(result[i]) && result[i] != '(' && result[i] != ')')
+        if (!isDigit(result[i]) && !isOperator(result[i]) && result[i] != '(' && result[i] != ')')
                         return false;
     }
     return true;
@@ -80,20 +113,27 @@ int MainWindow::Priority(char op)
 {
     switch (op)
     {
+    case '(':
+        return 1;
     case '+':
     case '-':
+    case 'M':           //stands for mod
         return 2;
-
     case '*':
     case '/':
         return 3;
     case '^':
         return 4;
-
-    case '(':
-        //case ')':
-        return 1;
-
+    case 'S':           //stands for sin()
+    case 'C':           //stands for cos()
+    case 'T':           //stands for tg()
+    case 'E':           //stands for exp()
+    case 'R':           //stands for 1/x
+    case 'O':           //let this one stand for log10()
+    case 'J':           //let this one stand for log2()
+    case 'I':           //stands for int
+    case 'X':           //stands for natural log
+        return 5;
     default:
         return -1;
     }
@@ -116,10 +156,10 @@ string MainWindow::toPostfix(string s)
     int k = 0; // iterator in "for each" loop
     bool flag = true; // declaring flag to count digits in a number
     for (char CurrVar : s) {
-        if (isdigit(CurrVar)) {
+        if (isDigit(CurrVar)) {
             result += CurrVar;              //
             if (k < s.size() - 1 && flag)   // checking if a number is more than 9
-                if (!isdigit(s[k + 1])) {   // if the next thing isn't a number than we put comma as a spacer
+                if (!isDigit(s[k + 1])) {   // if the next thing isn't a number than we put comma as a spacer
                     flag = false;           //
                     result += ',';          //
                 }                           //
@@ -170,10 +210,12 @@ string MainWindow::toPostfix(string s)
     return result;
 }
 
+//declaring variables to work with expressions such as a+b-3,
 float a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, xV, yV, z;
 string Astr, Bstr, Cstr, Dstr, Estr, Fstr, Gstr, Hstr, Istr, Jstr, Kstr, Lstr, Mstr, Nstr,
 Ostr, Pstr, Qstr, Rstr, Sstr, Tstr, Ustr, Vstr, Wstr, Xstr, Ystr, Zstr;
 
+//getting values to variables from the table
 float MainWindow::getValues()
 {
     QString str = ui->aEquals->text();
@@ -515,13 +557,27 @@ float MainWindow::getValues()
     }
 }
 
+//checking if the string contains russian characters
+bool MainWindow::containsRusCharacters(string currStr)
+{
+    string russChar = "ёйцукенгшщзхъфывапролджэячсмитьбю";
+    for (size_t i = 0; i < currStr.size(); i++){
+        if (russChar.find(currStr[i]) != -1)
+            return true;
+    }
+    return false;
+}
+
+//converting a+b-2 -> 12+23-2 by getting values from the table
 string MainWindow::convertString(string newStr)
 {
-    getValues();
+    getValues(); // getting values from the table next to the calculator
     string result, exp = "abcdefghijklmnopqrstuvwxyz";
 
-    for (int i = 0; i < newStr.size() - 1; i++){
-        if (exp.find(newStr[i]) != -1 && exp.find(newStr[i + 1]) != -1){
+    for (int i = 0; i < newStr.size() - 1; i++){                            //for loop
+        if (exp.find(newStr[i]) != -1 && exp.find(newStr[i + 1]) != -1      // is for adding multiplacation
+                || exp.find(newStr[i]) != -1 && isDigit(newStr[i + 1])      // operation sign
+                || exp.find(newStr[i + 1]) != -1 && isDigit(newStr[i])){    // for instance: 5ab-3 -> 5*a*b-3
             result += newStr[i];
             result += '*';
         }
@@ -531,93 +587,136 @@ string MainWindow::convertString(string newStr)
     result += newStr[newStr.size() - 1];
     string converted = result;
     result.clear();
-    for (int i = 0; i < converted.size(); i++){
-        if (isdigit(converted[i]))
-            result += converted[i];
+    for (int i = 0; i < converted.size(); i++){ // for loop is for putting numbers, where numbers are taken from the tale,
+        if (isDigit(converted[i]))              // instead of characters
+            result += converted[i];             // for instance 5*a*b -> 5*1*2
         else if (isOperator(converted[i]) || converted[i] == '(' || converted[i] == ')')
             result += converted[i];
         else{
-            if (converted[i] == 'a' || converted[i] == 'A'){
-                result += Astr;                
+            if (converted[i] == 'a'){
+                result += Astr;
+                continue;
             }
-            if (converted[i] == 'b' || converted[i] == 'B'){
+            if (converted[i] == 'b'){
                 result += Bstr;
+                continue;
             }
-            if (converted[i] == 'c' || converted[i] == 'C'){
-                result += Cstr;                
+            if (converted[i] == 'c'){
+                result += Cstr;
+                continue;
             }
-            if (converted[i] == 'd' || converted[i] == 'D'){
-                result += Dstr;                
+            if (converted[i] == 'd'){
+                result += Dstr;
+                continue;
             }
-            if (converted[i] == 'e' || converted[i] == 'E'){
+            if (converted[i] == 'e'){
                 result += Estr;                
+                continue;
             }
-            if (converted[i] == 'f' || converted[i] == 'F'){
+            if (converted[i] == 'f'){
                 result += Fstr;                
+                continue;
             }
-            if (converted[i] == 'g' || converted[i] == 'G'){
+            if (converted[i] == 'g'){
                 result += Gstr;                
+                continue;
             }
-            if (converted[i] == 'h' || converted[i] == 'H'){
+            if (converted[i] == 'h'){
                 result += Hstr;                
+                continue;
             }
-            if (converted[i] == 'i' || converted[i] == 'I'){
+            if (converted[i] == 'i'){
                 result += Istr;                
+                continue;
             }
-            if (converted[i] == 'j' || converted[i] == 'J'){
+            if (converted[i] == 'j'){
                 result += Jstr;               
+                continue;
             }
-            if (converted[i] == 'k' || converted[i] == 'K'){
+            if (converted[i] == 'k'){
                 result += Kstr;                
+                continue;
             }
-            if (converted[i] == 'l' || converted[i] == 'L'){
+            if (converted[i] == 'l'){
                 result += Lstr;                
+                continue;
             }
-            if (converted[i] == 'm' || converted[i] == 'M'){
+            if (converted[i] == 'm'){
                 result += Mstr;                
             }
-            if (converted[i] == 'n' || converted[i] == 'N'){
+            if (converted[i] == 'n'){
                 result += Nstr;
-                            }
-            if (converted[i] == 'o' || converted[i] == 'O'){
+                continue;
+            }
+            if (converted[i] == 'o'){
                 result += Ostr;                
+                continue;
             }
-            if (converted[i] == 'p' || converted[i] == 'P'){
+            if (converted[i] == 'p'){
                 result += Pstr;                
+                continue;
             }
-            if (converted[i] == 'q' || converted[i] == 'Q'){
+            if (converted[i] == 'q'){
                 result += Qstr;                
+                continue;
             }
-            if (converted[i] == 'r' || converted[i] == 'R'){
+            if (converted[i] == 'r'){
                 result += Rstr;                
+                continue;
             }
-            if (converted[i] == 's' || converted[i] == 'S'){
+            if (converted[i] == 's'){
                 result += Sstr;                
+                continue;
             }
-            if (converted[i] == 't' || converted[i] == 'T'){
+            if (converted[i] == 't'){
                 result += Tstr;               
+                continue;
             }
-            if (converted[i] == 'u' || converted[i] == 'U'){
+            if (converted[i] == 'u'){
                 result += Ustr;                
+                continue;
             }
-            if (converted[i] == 'v' || converted[i] == 'V'){
+            if (converted[i] == 'v'){
                 result += Vstr;               
+                continue;
             }
-            if (converted[i] == 'w' || converted[i] == 'W'){
+            if (converted[i] == 'w'){
                 result += Wstr;
+                continue;
             }
-            if (converted[i] == 'x' || converted[i] == 'X'){
+            if (converted[i] == 'x'){
                 result += Xstr;                
+                continue;
             }
-            if (converted[i] == 'y' || converted[i] == 'Y'){
+            if (converted[i] == 'y'){
                 result += Ystr;
+                continue;
             }
-            if (converted[i] == 'z' || converted[i] == 'Z'){
+            if (converted[i] == 'z'){
                 result += Zstr;                
+                continue;
             }
         }
     }
     return result;
+}
+
+//converting 4.3^(-1.2) -> 4.3^(0-1.2)
+string MainWindow::unarMinus(string start)
+{
+    string tmp;    
+    for (size_t i = 0; i < start.size() - 2; i++){
+        if (!isDigit(start[i]) && start[i] != ')' && start[i + 1] == '-' && isDigit(start[i + 2])){
+            tmp += '0';
+            tmp += start[i];
+        }
+        else
+            tmp += start[i];
+
+    }
+    tmp += start[start.size() - 2];
+    tmp += start[start.size() - 1];
+    return tmp;
 }
 
 // method which returns the string converted to Postfix Polish notation
@@ -625,29 +724,65 @@ string MainWindow::Parsing(QString s)
 {
     string converted = s.toStdString();    
     bool state;
-    Check(converted) ? state = 1 : state = 0;
-    if (state) {
-        converted = toPostfix(converted);        
+    //if the string contains characters such as abcd and etc
+    Check(converted) ? state = 1 : state = 0;    
+    if (!state) {
+          converted = convertString(converted);
     }
-    else{
-        converted = convertString(converted);
-        converted = toPostfix(converted);
-    }
+    converted = unarMinus(converted);
+    converted = toPostfix(converted);
     return converted;
+}
+
+//chaning SIN(30) -> S(30) for the following processing
+QString MainWindow::ChangeStr(QString start)
+{
+    QString res;
+    for (int i = 0; i < start.size(); i++){
+        if (start[i] == 'S' || start[i] == 'C' || start[i] == 'T' || start[i] == 'E' || start[i] == 'R'
+                || start[i] == 'M' || start[i] == 'L' || start[i] == 'I'){
+            if (start[i] == 'L' && start[i + 1] != 'O'){
+                if (start[i + 1] == 'G')
+                    res += 'O';
+                else if (start[i + 1] == 'N')
+                    res += 'X';
+                ++i;
+                continue;
+            }
+            else if (start[i] == 'L' && start[i + 1] == 'O'){
+                res += 'J';
+                i += 2;
+                continue;
+            }
+            else {
+                res += start[i];
+                i += 2;
+                continue;
+            }
+        }
+        else
+            res += start[i];
+    }
+    return res;
 }
 
 //the event that launches the second window where a user is able to see maths operations made
 void MainWindow::on_buttnEqual_clicked()
 {
     ui->statusbar->showMessage("'=' WAS PRESSED!");
-    QString currStr = ui->expr->text();
+    QString currStr = ui->expr->text();    
+    if (currStr.contains("S") || currStr.contains("C") || currStr.contains("T") || currStr.contains("E")
+            || currStr.contains("X") || currStr.contains("O") || currStr.contains("I") || currStr.contains("J")
+            || currStr.contains("M") || currStr.contains("R") || currStr.contains("L"))
+        currStr = ChangeStr(currStr);
 
-    if (!currStr.contains('=') && !currStr.isEmpty()){
-        string postFixNotation = Parsing(ui->expr->text()); //getting postfix notation
+    //if the string doesn't contain '=' and isn't empty and doesn't contain russian characters then we're fine
+    if (!currStr.contains('=') && !currStr.isEmpty() && !containsRusCharacters(currStr.toStdString())){
+        string postFixNotation = Parsing(currStr); //getting postfix notation
         SequenceOfOperations w;                             //creating an object of the second window
         w.setWindowTitle("Последовательность операций");
         w.setModal(true);
-        float res = w.Calculate(postFixNotation);           //getting the result of the expression
+        float res = w.Calculate(postFixNotation, Deg);           //getting the result of the expression
         QString toWrite = QString::number(res);
         QString prev = ui->expr->text();
         prev += "=";
@@ -668,7 +803,7 @@ void MainWindow::Digits()
             toCompare += 1;      
     }
 
-    if (prevNum.at(0) == '0'){          // delete first zero in the input string
+    if (prevNum.at(0) == '0' && !prevNum.contains('.')){          // delete first zero in the input string
         QString tmp;
         for (int i = 1; i < prevNum.size(); i++)
             tmp += prevNum.at(i);
@@ -679,7 +814,7 @@ void MainWindow::Digits()
     ui->expr->setText(prevNum);
 }
 
-// the slot is used in the "Operations" slot
+// the slot is used in the "Operations" slot to print operations signs on the screen
 void MainWindow::Update(QPushButton *&key, QChar op)
 {
     QString prev = ui->expr->text();
@@ -689,6 +824,36 @@ void MainWindow::Update(QPushButton *&key, QChar op)
     toStatusBar += " WAS PRESSED!";
     ui->statusbar->showMessage(toStatusBar);
     key->setChecked(false);
+}
+
+// the slot is used in the "Operations" slot to print operations signs on the screen
+void MainWindow::UPD(QPushButton *&key, QString op)
+{
+    QString prev = ui->expr->text();
+    op += '(';
+    op += prev;
+    op += ')';
+    ui->expr->setText(op);
+
+    QString toStatusBar = op;
+    toStatusBar += " WAS PRESSED!";
+    ui->statusbar->showMessage(toStatusBar);
+
+    key->setChecked(false);
+}
+
+// the slot is used in the "Operations" slot to print operations signs on the screen
+void MainWindow::UPD(QString op)
+{
+    QString prev = ui->expr->text();
+    prev += op;
+    ui->expr->setText(prev);
+
+    QString toStatusBar = op;
+    toStatusBar += " WAS PRESSED!";
+    ui->statusbar->showMessage(toStatusBar);
+
+    //key->setChecked(false);
 }
 
 // the slot is for adding operations symbols to the string that a user observes
@@ -718,6 +883,39 @@ void MainWindow::Operations()
     else if (ui->buttnPow->isChecked()){
         Update(key, '^');
     }
+    else if (ui->buttnDot->isChecked()){
+        Update(key, '.');
+    }
+    else if (ui->buttnSin->isChecked()){
+        UPD(key, "SIN");
+    }
+    else if (ui->buttnCos->isChecked()){
+        UPD(key, "COS");
+    }
+    else if (ui->buttnTan->isChecked()){
+        UPD(key, "TAN");
+    }
+    else if (ui->buttnExp->isChecked()){
+        UPD(key, "EXP");
+    }
+    else if (ui->buttnRev->isChecked()){
+        UPD(key, "REV");
+    }
+    else if (ui->buttnMod->isChecked()){
+        UPD("MOD");
+    }
+    else if (ui->buttnLg->isChecked()){
+        UPD(key, "LG");
+    }
+    else if (ui->buttnLog->isChecked()){
+        UPD(key, "LOG");
+    }
+    else if (ui->buttnInt->isChecked()){
+        UPD(key, "INT");
+    }
+    else if (ui->buttnLn->isChecked()){
+        UPD(key, "LN");
+    }
 }
 
 void MainWindow::ClearVariables()
@@ -736,6 +934,7 @@ void MainWindow::on_buttnDelete_clicked()
     ui->buttnDiv->setChecked(false);
     ui->buttnMulti->setChecked(false);
     ui->buttnMinus->setChecked(false);
+    ui->buttnDot->setChecked(false);
 
     QFont font ("Segoe UI", 26, QFont::Bold);   //setting font to normal size
     font.setPointSize(26);                      //
@@ -744,6 +943,16 @@ void MainWindow::on_buttnDelete_clicked()
     ui->expr->setText("0");
     ui->buttnDelete->setChecked(false);
     ui->statusbar->clearMessage();
+
+    ui->buttnSin->setChecked(false);
+    ui->buttnCos->setChecked(false);
+    ui->buttnTan->setChecked(false);
+    ui->buttnExp->setChecked(false);
+    ui->buttnMod->setChecked(false);
+    ui->buttnLog->setChecked(false);
+    ui->buttnLg->setChecked(false);
+    ui->buttnInt->setChecked(false);
+    ui->buttnLn->setChecked(false);
 
     ClearVariables();
 }
@@ -770,6 +979,35 @@ void MainWindow::on_buttnBackspace_clicked()
         toCompare -= 1;
         font.setPointSize(fontSize);
         ui->expr->setFont(font);
-     }
+    }
     ClearVariables();
+}
+
+// the event is for swithcing degrees button on
+void MainWindow::on_DegOn_toggled(bool checked)
+{
+    Deg = true;
+}
+
+// the event is for swithcing radians button on
+void MainWindow::on_RadOn_toggled(bool checked)
+{
+    Deg = false;
+}
+
+//resizing main window
+void MainWindow::on_buttnInv_clicked()
+{    
+    if (ui->buttnInv->isChecked()){
+        this->resize(1248, 570);        
+        ui->buttnInv->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: #191970;"
+                                    "border-radius: 10px;");
+    }
+    else{
+        this->resize(1248, 435);        
+        ui->buttnInv->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: rgb(85, 198, 228);"
+                                    "border-radius: 10px;");
+    }
 }

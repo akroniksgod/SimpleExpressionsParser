@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>1248</width>
-    <height>514</height>
+    <height>435</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+   <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -19,18 +19,18 @@
   <property name="minimumSize">
    <size>
     <width>1248</width>
-    <height>432</height>
+    <height>435</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>1248</width>
-    <height>514</height>
+    <height>570</height>
    </size>
   </property>
   <property name="sizeIncrement">
    <size>
-    <width>1</width>
+    <width>0</width>
     <height>0</height>
    </size>
   </property>
@@ -57,142 +57,10 @@
       <x>660</x>
       <y>10</y>
       <width>581</width>
-      <height>451</height>
+      <height>391</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="2">
-      <widget class="QLineEdit" name="mEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>m=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="jEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>j=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="3">
-      <widget class="QLineEdit" name="xEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>x=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QLineEdit" name="tEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>t=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="3">
-      <widget class="QLineEdit" name="wEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>w=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
-      <widget class="QLineEdit" name="pEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>p=0</string>
-       </property>
-      </widget>
-     </item>
      <item row="5" column="1">
       <widget class="QLineEdit" name="lEquals">
        <property name="sizePolicy">
@@ -237,8 +105,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
-      <widget class="QLineEdit" name="uEquals">
+     <item row="0" column="2">
+      <widget class="QLineEdit" name="mEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -255,12 +123,12 @@
         <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>u=0</string>
+        <string>m=0</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="hEquals">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="gEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -277,7 +145,7 @@
         <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>h=0</string>
+        <string>g=0</string>
        </property>
       </widget>
      </item>
@@ -303,8 +171,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="iEquals">
+     <item row="3" column="0">
+      <widget class="QLineEdit" name="dEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -321,7 +189,51 @@
         <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>i=0</string>
+        <string>d=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QLineEdit" name="wEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>w=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLineEdit" name="rEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>r=0</string>
        </property>
       </widget>
      </item>
@@ -369,8 +281,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLineEdit" name="cEquals">
+     <item row="1" column="0">
+      <widget class="QLineEdit" name="bEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -387,12 +299,12 @@
         <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>c=0</string>
+        <string>b=0</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLineEdit" name="dEquals">
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="iEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -409,29 +321,7 @@
         <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>d=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="gEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>g=0</string>
+        <string>i=0</string>
        </property>
       </widget>
      </item>
@@ -457,8 +347,8 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QLineEdit" name="bEquals">
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="tEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -475,12 +365,12 @@
         <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>b=0</string>
+        <string>t=0</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
-      <widget class="QLineEdit" name="sEquals">
+     <item row="2" column="3">
+      <widget class="QLineEdit" name="uEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -497,51 +387,7 @@
         <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>s=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="2">
-      <widget class="QLineEdit" name="rEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>r=0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="2">
-      <widget class="QLineEdit" name="qEquals">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>q=0</string>
+        <string>u=0</string>
        </property>
       </widget>
      </item>
@@ -567,6 +413,160 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="0">
+      <widget class="QLineEdit" name="cEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>c=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="jEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>j=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="hEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>h=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QLineEdit" name="xEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>x=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLineEdit" name="qEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>q=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="sEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>s=0</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLineEdit" name="pEquals">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>p=0</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="0">
       <widget class="QLineEdit" name="aEquals">
        <property name="sizePolicy">
@@ -589,7 +589,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="4">
+     <item row="6" column="3">
       <widget class="QLineEdit" name="yEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -611,7 +611,7 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="4">
+     <item row="6" column="2">
       <widget class="QLineEdit" name="zEquals">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -641,7 +641,7 @@
       <x>9</x>
       <y>9</y>
       <width>631</width>
-      <height>451</height>
+      <height>531</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -669,270 +669,8 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="3" column="0">
-        <widget class="QPushButton" name="buttn1">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(228, 238, 246);
-    color: rgb(0, 0, 0);
-	border-radius: 10px;
-}
-QPushButton:pressed{
-	background-color: #a9abac;
-	color: rgb(0, 0, 0);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="shortcut">
-          <string>1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="buttnOpenBr">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(85, 198, 228);
-    color: rgb(255, 255, 255);
-	border-radius: 10px;
-}
-
-QPushButton:pressed {
-	background-color: #2a97b0;
-	color: rgb(255, 255, 255);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>(</string>
-         </property>
-         <property name="shortcut">
-          <string>(</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="4">
-        <widget class="QPushButton" name="buttnPlus">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(85, 198, 228);
-    color: rgb(255, 255, 255);
-	border-radius: 10px;
-}
-
-QPushButton:pressed {
-	background-color: #2a97b0;
-	color: rgb(255, 255, 255);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>+</string>
-         </property>
-         <property name="shortcut">
-          <string>+</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="buttn5">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(228, 238, 246);
-    color: rgb(0, 0, 0);
-	border-radius: 10px;
-}
-QPushButton:pressed{
-	background-color: #a9abac;
-	color: rgb(0, 0, 0);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>5</string>
-         </property>
-         <property name="shortcut">
-          <string>5</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QPushButton" name="buttnClosingBr">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(85, 198, 228);
-    color: rgb(255, 255, 255);
-	border-radius: 10px;
-}
-
-QPushButton:pressed {
-	background-color: #2a97b0;
-	color: rgb(255, 255, 255);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>)</string>
-         </property>
-         <property name="shortcut">
-          <string>)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QPushButton" name="buttn3">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(228, 238, 246);
-    color: rgb(0, 0, 0);
-	border-radius: 10px;
-}
-QPushButton:pressed{
-	background-color: #a9abac;
-	color: rgb(0, 0, 0);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>3</string>
-         </property>
-         <property name="shortcut">
-          <string>3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="buttn4">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(228, 238, 246);
-    color: rgb(0, 0, 0);
-	border-radius: 10px;
-}
-QPushButton:pressed{
-	background-color: #a9abac;
-	color: rgb(0, 0, 0);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>4</string>
-         </property>
-         <property name="shortcut">
-          <string>4</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="5">
-        <widget class="QPushButton" name="buttnDelete">
+        <widget class="QPushButton" name="buttnDiv">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
            <horstretch>0</horstretch>
@@ -962,10 +700,10 @@ QPushButton:pressed {
 }</string>
          </property>
          <property name="text">
-          <string>C</string>
+          <string>/</string>
          </property>
          <property name="shortcut">
-          <string>Del</string>
+          <string>/</string>
          </property>
         </widget>
        </item>
@@ -1006,82 +744,7 @@ QPushButton:pressed{
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="buttn8">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(228, 238, 246);
-    color: rgb(0, 0, 0);
-	border-radius: 10px;
-}
-QPushButton:pressed{
-	background-color: #a9abac;
-	color: rgb(0, 0, 0);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>8</string>
-         </property>
-         <property name="shortcut">
-          <string>8</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="5">
-        <widget class="QPushButton" name="buttnDiv">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(85, 198, 228);
-    color: rgb(255, 255, 255);
-	border-radius: 10px;
-}
-
-QPushButton:pressed {
-	background-color: #2a97b0;
-	color: rgb(255, 255, 255);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>/</string>
-         </property>
-         <property name="shortcut">
-          <string>/</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="4">
+       <item row="1" column="4">
         <widget class="QPushButton" name="buttnMulti">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
@@ -1116,43 +779,6 @@ QPushButton:pressed {
          </property>
          <property name="shortcut">
           <string>*</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="buttn7">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(228, 238, 246);
-    color: rgb(0, 0, 0);
-	border-radius: 10px;
-}
-QPushButton:pressed{
-	background-color: #a9abac;
-	color: rgb(0, 0, 0);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>7</string>
-         </property>
-         <property name="shortcut">
-          <string>7</string>
          </property>
         </widget>
        </item>
@@ -1193,7 +819,44 @@ QPushButton:pressed{
          </property>
         </widget>
        </item>
-       <item row="3" column="5">
+       <item row="3" column="2">
+        <widget class="QPushButton" name="buttn3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(228, 238, 246);
+    color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
+QPushButton:pressed{
+	background-color: #a9abac;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>3</string>
+         </property>
+         <property name="shortcut">
+          <string>3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
         <widget class="QPushButton" name="buttnMinus">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
@@ -1228,6 +891,624 @@ QPushButton:pressed {
          </property>
          <property name="shortcut">
           <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QPushButton" name="buttnSin">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>sin</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QRadioButton" name="DegOn">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>DEG</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RadOn">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>RAD</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="buttn9">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(228, 238, 246);
+    color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
+QPushButton:pressed{
+	background-color: #a9abac;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>9</string>
+         </property>
+         <property name="shortcut">
+          <string>9</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="buttn8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(228, 238, 246);
+    color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
+QPushButton:pressed{
+	background-color: #a9abac;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>8</string>
+         </property>
+         <property name="shortcut">
+          <string>8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="4">
+        <widget class="QPushButton" name="buttnCos">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>cos</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QPushButton" name="buttnLg">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>log10</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="buttn7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(228, 238, 246);
+    color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
+QPushButton:pressed{
+	background-color: #a9abac;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>7</string>
+         </property>
+         <property name="shortcut">
+          <string>7</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="buttnDot">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="buttnOpenBr">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>(</string>
+         </property>
+         <property name="shortcut">
+          <string>(</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QPushButton" name="buttnRev">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>1/x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="buttnMod">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>mod</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="buttn5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(228, 238, 246);
+    color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
+QPushButton:pressed{
+	background-color: #a9abac;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>5</string>
+         </property>
+         <property name="shortcut">
+          <string>5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="buttn1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(228, 238, 246);
+    color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
+QPushButton:pressed{
+	background-color: #a9abac;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="shortcut">
+          <string>1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QPushButton" name="buttnPlus">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>+</string>
+         </property>
+         <property name="shortcut">
+          <string>+</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButton" name="buttnBackspace">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>⌫</string>
+         </property>
+         <property name="shortcut">
+          <string>Backspace</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="buttn4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(228, 238, 246);
+    color: rgb(0, 0, 0);
+	border-radius: 10px;
+}
+QPushButton:pressed{
+	background-color: #a9abac;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>4</string>
+         </property>
+         <property name="shortcut">
+          <string>4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="buttnInt">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>int</string>
          </property>
         </widget>
        </item>
@@ -1268,10 +1549,10 @@ QPushButton:pressed{
          </property>
         </widget>
        </item>
-       <item row="1" column="4">
-        <widget class="QPushButton" name="buttnBackspace">
+       <item row="6" column="0">
+        <widget class="QPushButton" name="buttnExp">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -1299,47 +1580,7 @@ QPushButton:pressed {
 }</string>
          </property>
          <property name="text">
-          <string>⌫</string>
-         </property>
-         <property name="shortcut">
-          <string>Backspace</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="buttn9">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-QPushButton {
-	background-color: rgb(228, 238, 246);
-    color: rgb(0, 0, 0);
-	border-radius: 10px;
-}
-QPushButton:pressed{
-	background-color: #a9abac;
-	color: rgb(0, 0, 0);
-	border-radius: 10px;
-}</string>
-         </property>
-         <property name="text">
-          <string>9</string>
-         </property>
-         <property name="shortcut">
-          <string>9</string>
+          <string>exp</string>
          </property>
         </widget>
        </item>
@@ -1381,7 +1622,150 @@ QPushButton:pressed {
          </property>
         </widget>
        </item>
-       <item row="4" column="4">
+       <item row="8" column="1">
+        <widget class="QPushButton" name="buttnLog">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>log2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPushButton" name="buttnLn">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>ln</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="5">
+        <widget class="QPushButton" name="buttnTan">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>tan</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QPushButton" name="buttnDelete">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>C</string>
+         </property>
+         <property name="shortcut">
+          <string>Del</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
         <widget class="QPushButton" name="buttnPow">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
@@ -1413,6 +1797,80 @@ QPushButton:pressed {
          </property>
          <property name="text">
           <string>^</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="buttnInv">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>INV</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QPushButton" name="buttnClosingBr">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+QPushButton {
+	background-color: rgb(85, 198, 228);
+    color: rgb(255, 255, 255);
+	border-radius: 10px;
+}
+
+QPushButton:pressed {
+	background-color: #2a97b0;
+	color: rgb(255, 255, 255);
+	border-radius: 10px;
+}</string>
+         </property>
+         <property name="text">
+          <string>)</string>
+         </property>
+         <property name="shortcut">
+          <string>)</string>
          </property>
         </widget>
        </item>
