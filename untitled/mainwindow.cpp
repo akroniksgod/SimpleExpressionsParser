@@ -72,6 +72,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     on_DegOn_toggled(true);
     ui->buttnInv->setCheckable(true);
+    ui->buttnExpand->setCheckable(true);
+
 }
 
 MainWindow::~MainWindow()
@@ -89,7 +91,7 @@ bool MainWindow::isDigit(char op)
 }
 
 //checking if a symbol is operation
-bool MainWindow::isOperator(char op)
+bool MainWindow::IsOperator(char op)
 {
     string str = "*/+-^SINCOTAEXPRVMDLGJ";
     if (str.find(op) != -1)
@@ -102,14 +104,14 @@ bool MainWindow::isOperator(char op)
 bool MainWindow::Check(string result)
 {
     for (int i = 0; i < result.size(); i++) {
-        if (!isDigit(result[i]) && !isOperator(result[i]) && result[i] != '(' && result[i] != ')')
+        if (!isDigit(result[i]) && !IsOperator(result[i]) && result[i] != '(' && result[i] != ')')
                         return false;
     }
     return true;
 }
 
 // the method defines what precedence each operation has
-int MainWindow::Priority(char op)
+int MainWindow::ReturnPriorityVal(char op)
 {
     switch (op)
     {
@@ -140,7 +142,7 @@ int MainWindow::Priority(char op)
 }
 
 // the method removes comma at the end of the string
-string MainWindow::removeLastEl(string result)
+string MainWindow::RemoveLastEl(string result)
 {
     string tmp;
     for (int i = 0; i < result.size() - 1; i++)
@@ -149,7 +151,7 @@ string MainWindow::removeLastEl(string result)
 }
 
 //converting infix to postfix notation using stack
-string MainWindow::toPostfix(string s)
+string MainWindow::ToPostfixNotation(string s)
 {
     stack <char> stk;
     string result;
@@ -169,10 +171,10 @@ string MainWindow::toPostfix(string s)
                 result += ',';     // we put spacer
         }
         else {
-            if (isOperator(CurrVar)) {
-                int CurrPrior = Priority(CurrVar), StackPrior = 0;  //checking priority of the current variable
+            if (IsOperator(CurrVar)) {
+                int CurrPrior = ReturnPriorityVal(CurrVar), StackPrior = 0;  //checking priority of the current variable
                 if (!stk.empty())
-                    StackPrior = Priority(stk.top()); // checking priority of the variable on top of stack
+                    StackPrior = ReturnPriorityVal(stk.top()); // checking priority of the variable on top of stack
                 if (!stk.empty() && (StackPrior < CurrPrior))
                     stk.push(CurrVar);
                 else {
@@ -181,7 +183,7 @@ string MainWindow::toPostfix(string s)
                         result += ',';                                  // then we put them in to the result string
                         stk.pop();
                         if(!stk.empty())
-                            StackPrior = Priority(stk.top());          // resetting priority of the top element of stack
+                            StackPrior = ReturnPriorityVal(stk.top());          // resetting priority of the top element of stack
                     }
                     stk.push(CurrVar);
                 }
@@ -206,7 +208,7 @@ string MainWindow::toPostfix(string s)
         result += ',';  //
         stk.pop();
     }
-    result = removeLastEl(result);  //
+    result = RemoveLastEl(result);  //
     return result;
 }
 
@@ -216,7 +218,7 @@ string Astr, Bstr, Cstr, Dstr, Estr, Fstr, Gstr, Hstr, Istr, Jstr, Kstr, Lstr, M
 Ostr, Pstr, Qstr, Rstr, Sstr, Tstr, Ustr, Vstr, Wstr, Xstr, Ystr, Zstr;
 
 //getting values to variables from the table
-float MainWindow::getValues()
+float MainWindow::GetValues()
 {
     QString str = ui->aEquals->text();
     string st = str.toStdString();
@@ -558,7 +560,7 @@ float MainWindow::getValues()
 }
 
 //checking if the string contains russian characters
-bool MainWindow::containsRusCharacters(string currStr)
+bool MainWindow::CheckIfContainsRusCharacters(string currStr)
 {
     string russChar = "ёйцукенгшщзхъфывапролджэячсмитьбю";
     for (size_t i = 0; i < currStr.size(); i++){
@@ -569,9 +571,9 @@ bool MainWindow::containsRusCharacters(string currStr)
 }
 
 //converting a+b-2 -> 12+23-2 by getting values from the table
-string MainWindow::convertString(string newStr)
+string MainWindow::InsertValuesInsteadOfVars(string newStr)
 {
-    getValues(); // getting values from the table next to the calculator
+    GetValues(); // getting values from the table next to the calculator
     string result, exp = "abcdefghijklmnopqrstuvwxyz";
 
     for (int i = 0; i < newStr.size() - 1; i++){                            //for loop
@@ -590,7 +592,7 @@ string MainWindow::convertString(string newStr)
     for (int i = 0; i < converted.size(); i++){ // for loop is for putting numbers, where numbers are taken from the tale,
         if (isDigit(converted[i]))              // instead of characters
             result += converted[i];             // for instance 5*a*b -> 5*1*2
-        else if (isOperator(converted[i]) || converted[i] == '(' || converted[i] == ')')
+        else if (IsOperator(converted[i]) || converted[i] == '(' || converted[i] == ')')
             result += converted[i];
         else{
             if (converted[i] == 'a'){
@@ -702,7 +704,7 @@ string MainWindow::convertString(string newStr)
 }
 
 //converting 4.3^(-1.2) -> 4.3^(0-1.2)
-string MainWindow::unarMinus(string start)
+string MainWindow::CheckForUnarMinus(string start)
 {
     string tmp;    
     for (size_t i = 0; i < start.size() - 2; i++){
@@ -727,15 +729,15 @@ string MainWindow::Parsing(QString s)
     //if the string contains characters such as abcd and etc
     Check(converted) ? state = 1 : state = 0;    
     if (!state) {
-          converted = convertString(converted);
+          converted = InsertValuesInsteadOfVars(converted);
     }
-    converted = unarMinus(converted);
-    converted = toPostfix(converted);
+    converted = CheckForUnarMinus(converted);
+    converted = ToPostfixNotation(converted);
     return converted;
 }
 
 //chaning SIN(30) -> S(30) for the following processing
-QString MainWindow::ChangeStr(QString start)
+QString MainWindow::ShortenStrForOperations(QString start)
 {
     QString res;
     for (int i = 0; i < start.size(); i++){
@@ -766,6 +768,16 @@ QString MainWindow::ChangeStr(QString start)
     return res;
 }
 
+bool MainWindow::ContainsSpaceAfterOperator(string currStr)
+{
+    for (size_t i = 0; i < currStr.size() - 1; i++)
+    {
+        if (IsOperator(currStr[i]) && currStr[i + 1] == ' ')
+            return true;
+    }
+    return false;
+}
+
 //the event that launches the second window where a user is able to see maths operations made
 void MainWindow::on_buttnEqual_clicked()
 {
@@ -774,15 +786,15 @@ void MainWindow::on_buttnEqual_clicked()
     if (currStr.contains("S") || currStr.contains("C") || currStr.contains("T") || currStr.contains("E")
             || currStr.contains("X") || currStr.contains("O") || currStr.contains("I") || currStr.contains("J")
             || currStr.contains("M") || currStr.contains("R") || currStr.contains("L"))
-        currStr = ChangeStr(currStr);
+        currStr = ShortenStrForOperations(currStr);
 
     //if the string doesn't contain '=' and isn't empty and doesn't contain russian characters then we're fine
-    if (!currStr.contains('=') && !currStr.isEmpty() && !containsRusCharacters(currStr.toStdString())){
+    if (!currStr.contains('=') && !currStr.isEmpty() && !CheckIfContainsRusCharacters(currStr.toStdString()) && !ContainsSpaceAfterOperator(currStr.toStdString())){
         string postFixNotation = Parsing(currStr); //getting postfix notation
         SequenceOfOperations w;                             //creating an object of the second window
         w.setWindowTitle("Последовательность операций");
         w.setModal(true);
-        float res = w.Calculate(postFixNotation, Deg);           //getting the result of the expression
+        float res = w.CalcByPostfixNotation(postFixNotation, Deg);           //getting the result of the expression
         QString toWrite = QString::number(res);
         QString prev = ui->expr->text();
         prev += "=";
@@ -995,19 +1007,66 @@ void MainWindow::on_RadOn_toggled(bool checked)
     Deg = false;
 }
 
+const int EXPAND_VARS_WIND = 1248,
+        SHORTEN_VARS_WIND = 648,
+        EXPAND_OPERATION_WIND = 570,
+        SHORTEN_OPERATION_WIND = 435;
+
+
 //resizing main window
 void MainWindow::on_buttnInv_clicked()
 {    
-    if (ui->buttnInv->isChecked()){
-        this->resize(1248, 570);        
+    if (ui->buttnInv->isChecked() && ui->buttnExpand->isChecked()){
+        this->resize(EXPAND_VARS_WIND, EXPAND_OPERATION_WIND);
         ui->buttnInv->setStyleSheet("color: rgb(255, 255, 255);"
                                     "background-color: #191970;"
                                     "border-radius: 10px;");
     }
-    else{
-        this->resize(1248, 435);        
+    else if (!ui->buttnInv->isChecked() && ui->buttnExpand->isChecked()){
+        this->resize(EXPAND_VARS_WIND, SHORTEN_OPERATION_WIND);
+        ui->buttnInv->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: rgb(85, 198, 228);"
+                                    "border-radius: 10px;");
+    }
+    else if (ui->buttnInv->isChecked() && !ui->buttnExpand->isChecked()){
+        this->resize(SHORTEN_VARS_WIND, EXPAND_OPERATION_WIND);
+        ui->buttnInv->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: #191970;"
+                                    "border-radius: 10px;");
+    }
+    else if (!ui->buttnInv->isChecked() && !ui->buttnExpand->isChecked()){
+        this->resize(SHORTEN_VARS_WIND, SHORTEN_OPERATION_WIND);
         ui->buttnInv->setStyleSheet("color: rgb(255, 255, 255);"
                                     "background-color: rgb(85, 198, 228);"
                                     "border-radius: 10px;");
     }
 }
+
+void MainWindow::on_buttnExpand_clicked()
+{
+    if (ui->buttnInv->isChecked() && ui->buttnExpand->isChecked()){
+        this->resize(EXPAND_VARS_WIND, EXPAND_OPERATION_WIND);
+        ui->buttnExpand->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: #191970;"
+                                    "border-radius: 10px;");
+    }
+    else if (ui->buttnExpand->isChecked() && !ui->buttnInv->isChecked()){
+        this->resize(EXPAND_VARS_WIND, SHORTEN_OPERATION_WIND);
+        ui->buttnExpand->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: #191970;"
+                                    "border-radius: 10px;");
+    }
+    else if (!ui->buttnInv->isChecked() && !ui->buttnInv->isChecked()){
+        this->resize(SHORTEN_VARS_WIND, SHORTEN_OPERATION_WIND);
+        ui->buttnExpand->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: rgb(85, 198, 228);"
+                                    "border-radius: 10px;");
+    }
+    else if (!ui->buttnExpand->isChecked() && ui->buttnInv->isChecked()){
+        this->resize(SHORTEN_VARS_WIND, EXPAND_OPERATION_WIND);
+        ui->buttnExpand->setStyleSheet("color: rgb(255, 255, 255);"
+                                    "background-color: rgb(85, 198, 228);"
+                                    "border-radius: 10px;");
+    }
+}
+

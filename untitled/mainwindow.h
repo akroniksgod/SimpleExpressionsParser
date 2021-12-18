@@ -29,7 +29,7 @@ private slots:
 
     void UPD(QPushButton *&key, QString op);
     void UPD(QString op);
-    QString ChangeStr(QString start);
+    QString ShortenStrForOperations(QString start);
 
     void on_buttnEqual_clicked();
     void Digits();
@@ -37,18 +37,18 @@ private slots:
     void on_buttnDelete_clicked();
     void on_buttnBackspace_clicked();
 
-    bool isOperator(char op);
+    bool IsOperator(char op);
     bool isDigit(char op);
     bool Check(std::string result);
-    int Priority(char op);
-    std::string unarMinus(std::string start);
-    std::string removeLastEl(std::string result);
-    std::string toPostfix(std::string s);
-    bool containsRusCharacters(std::string currStr);
+    int ReturnPriorityVal(char op);
+    std::string CheckForUnarMinus(std::string start);
+    std::string RemoveLastEl(std::string result);
+    std::string ToPostfixNotation(std::string s);
+    bool CheckIfContainsRusCharacters(std::string currStr);
     void ClearVariables();
 
-    float getValues();
-    std::string convertString(std::string newStr);
+    float GetValues();
+    std::string InsertValuesInsteadOfVars(std::string newStr);
 
     std::string Parsing(QString s);
 
@@ -58,6 +58,10 @@ private slots:
     void on_RadOn_toggled(bool checked);
 
     void on_buttnInv_clicked();
+
+    bool ContainsSpaceAfterOperator(std::string currStr);
+
+    void on_buttnExpand_clicked();
 
 private:
     Ui::MainWindow *ui;

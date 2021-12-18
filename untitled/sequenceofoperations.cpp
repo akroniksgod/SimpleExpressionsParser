@@ -13,7 +13,7 @@ SequenceOfOperations::SequenceOfOperations(QWidget *parent) :
     ui->setupUi(this);
 }
 
-bool SequenceOfOperations::isDigit(char op)
+bool SequenceOfOperations::IsDigit(char op)
 {
     string str = "0123456789.";
     if (str.find(op) != -1)
@@ -59,7 +59,7 @@ void SequenceOfOperations::PrintExprInTheWin(float op1, float op2, QString op, i
     ui->label->setText(res);
 }
 
-bool periodCheck(float number)
+bool PeriodCheck(float number)
 {
     for (size_t i = 90; i < 1000; i += 180){
         if (number == i)
@@ -69,7 +69,7 @@ bool periodCheck(float number)
 }
 
 //returning solution + printing steps of calculating solution in the second window
-float SequenceOfOperations::Calculate(string s, bool DegOrRad)
+float SequenceOfOperations::CalcByPostfixNotation(string s, bool DegOrRad)
 {
     stack <float> storage;    
     bool flag = 1;
@@ -78,7 +78,7 @@ float SequenceOfOperations::Calculate(string s, bool DegOrRad)
     QPixmap Err(":/pictures/pics/error.png"); // for printing the error pic
     for (int i = 0; i < s.size(); i++)
     {
-        if (isDigit(s[i])) {
+        if (IsDigit(s[i])) {
             float n = s[i] - 48;                                // ascii thing
             float count = 0.1;
                 while (s[++i] != ',') {
@@ -105,26 +105,26 @@ float SequenceOfOperations::Calculate(string s, bool DegOrRad)
             storage.push(n);
         }
         else if (s[i] == '+' || s[i] == '-' || s[i] == '/' || s[i] == '*' || s[i] == '^') {
-            float op1 = storage.top();                              //getting second operand
+            float op1 = storage.top(), op2;                              //getting second operand
             storage.pop();
-
-            if (s[i] == '^'){
-                float op2 = storage.top();                          //getting first operand
+            if (!storage.empty()){
+                op2 = storage.top();                          //getting first operand
                 storage.pop();
+            }
+            else
+                op2 = 0;
+
+            if (s[i] == '^'){                
                 PrintExprInTheWin(op1, op2, '^', count);
                 op1 = pow(op2, op1);
             }
 
-            if (s[i] == '*') {                                      // if the operation is multiplication
-                float op2 = storage.top(); //getting first operand
-                storage.pop();
+            if (s[i] == '*') {                                     // if the operation is multiplication
                 PrintExprInTheWin(op1, op2, '*', count);
                 op1 *= op2;
             }
             else if (s[i] == '/') {                                 // if the operation is division
                 //checking if the second operand is 0
-                float op2 = storage.top();                          //getting first operand
-                storage.pop();
                 if (op1) {
                     PrintExprInTheWin(op1, op2, '/', count);
                     op1 = op2 / op1;
@@ -135,14 +135,10 @@ float SequenceOfOperations::Calculate(string s, bool DegOrRad)
                 }
             }
             if (s[i] == '+') {                                      // if the operation is additon
-                float op2 = storage.top();                          //getting first operand
-                storage.pop();
                 PrintExprInTheWin(op1, op2, '+', count);
                 op1 += op2;
             }
             else if (s[i] == '-') {                             // if the operation is substraction
-                float op2 = storage.top();                      //getting first operand
-                storage.pop();
                 PrintExprInTheWin(op1, op2, '-', count);
                 op1 = op2 - op1;
             }
@@ -163,7 +159,7 @@ float SequenceOfOperations::Calculate(string s, bool DegOrRad)
             if (s[i] == 'C'){                               // for the cos operation
                 PrintExprInTheWin(op1, "cos", count);
                 if (DegOrRad){
-                    if (periodCheck(op1))
+                    if (PeriodCheck(op1))
                         op1 = cos(op1 * toConvertDegToRad);
                     else
                         op1 = 0;
@@ -174,7 +170,7 @@ float SequenceOfOperations::Calculate(string s, bool DegOrRad)
             if (s[i] == 'T'){                               // for the tg operation
                 PrintExprInTheWin(op1, "tg", count);
                 if (DegOrRad)
-                    if (periodCheck(op1))
+                    if (PeriodCheck(op1))
                     //if (cos(op1 * toConvertDegToRad) != 0)
                         op1 = tan(op1 * toConvertDegToRad);
                     else{
