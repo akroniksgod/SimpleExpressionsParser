@@ -101,7 +101,7 @@ bool MainWindow::IsOperator(char op)
 
 // the function is needed for checking if an input string contains proper symbols
 // such as {0...9} or {+, -, *, /, (, )}; USED IN the "Parsing" method
-bool MainWindow::Check(string result)
+bool MainWindow::ProperSymbCheck(string result)
 {
     for (int i = 0; i < result.size(); i++) {
         if (!isDigit(result[i]) && !IsOperator(result[i]) && result[i] != '(' && result[i] != ')')
@@ -157,11 +157,14 @@ string MainWindow::ToPostfixNotation(string s)
     string result;
     int k = 0; // iterator in "for each" loop
     bool flag = true; // declaring flag to count digits in a number
-    for (char CurrVar : s) {
-        if (isDigit(CurrVar)) {
+    for (char CurrVar : s)
+    {
+        if (isDigit(CurrVar))
+        {
             result += CurrVar;              //
             if (k < s.size() - 1 && flag)   // checking if a number is more than 9
-                if (!isDigit(s[k + 1])) {   // if the next thing isn't a number than we put comma as a spacer
+                if (!isDigit(s[k + 1]))
+                {   // if the next thing isn't a number than we put comma as a spacer
                     flag = false;           //
                     result += ',';          //
                 }                           //
@@ -170,15 +173,19 @@ string MainWindow::ToPostfixNotation(string s)
             if (k == s.size() - 1) // in case if the last symbol in the string is a digit
                 result += ',';     // we put spacer
         }
-        else {
-            if (IsOperator(CurrVar)) {
+        else
+        {
+            if (IsOperator(CurrVar))
+            {
                 int CurrPrior = ReturnPriorityVal(CurrVar), StackPrior = 0;  //checking priority of the current variable
                 if (!stk.empty())
                     StackPrior = ReturnPriorityVal(stk.top()); // checking priority of the variable on top of stack
                 if (!stk.empty() && (StackPrior < CurrPrior))
                     stk.push(CurrVar);
-                else {
-                    while (!stk.empty() && (StackPrior >= CurrPrior)) { // if there is/are elements
+                else
+                {
+                    while (!stk.empty() && (StackPrior >= CurrPrior))   // if there is/are elements
+                    {
                         result += stk.top();                            // having greater precedence on top of stack
                         result += ',';                                  // then we put them in to the result string
                         stk.pop();
@@ -190,8 +197,10 @@ string MainWindow::ToPostfixNotation(string s)
             }
             if (CurrVar == '(')
                 stk.push(CurrVar);
-            if (CurrVar == ')') {
-                while (stk.top() != '(') {          // moving untill the element is not an open bracket
+            if (CurrVar == ')')
+            {
+                while (stk.top() != '(')            // moving untill the element is not an open bracket
+                {
                     result += stk.top();            // putting to the result string operators from stack
                     result += ',';  //
                     stk.pop();
@@ -203,12 +212,13 @@ string MainWindow::ToPostfixNotation(string s)
         ++k;
     }                                                                              // infix expr    postfix expr
     // if stack contains some operators then they should be put in the result string: (1+2)*4+3 --> 12+4*3+
-    while (!stk.empty()) {
+    while (!stk.empty())
+    {
         result += stk.top();
         result += ',';  //
         stk.pop();
     }
-    result = RemoveLastEl(result);  //
+    result = RemoveLastEl(result);
     return result;
 }
 
@@ -222,11 +232,11 @@ float MainWindow::GetValues()
 {
     QString str = ui->aEquals->text();
     string st = str.toStdString();
-    size_t size = str.size();
+    int size = str.size();
     for (int i = 2; i < size; i++){
         if (a == 0)
             a = st[i] - 48;
-        else{
+        else {
             a *= 10;
             a += st[i] - 48;
         }
@@ -249,10 +259,11 @@ float MainWindow::GetValues()
     str = ui->cEquals->text();
     st = str.toStdString();
     size = str.size();
-    for (int i = 2; i < size; i++){
+    for (int i = 2; i < size; i++)
+    {
         if (c == 0)
             c = st[i] - 48;
-        else{
+        else {
             c *= 10;
             c += st[i] - 48;
         }
@@ -707,8 +718,10 @@ string MainWindow::InsertValuesInsteadOfVars(string newStr)
 string MainWindow::CheckForUnarMinus(string start)
 {
     string tmp;    
-    for (size_t i = 0; i < start.size() - 2; i++){
-        if (!isDigit(start[i]) && start[i] != ')' && start[i + 1] == '-' && isDigit(start[i + 2])){
+    for (size_t i = 0; i < start.size() - 2; i++)
+    {
+        if (!isDigit(start[i]) && start[i] != ')' && start[i + 1] == '-' && isDigit(start[i + 2]))
+        {
             tmp += '0';
             tmp += start[i];
         }
@@ -724,11 +737,9 @@ string MainWindow::CheckForUnarMinus(string start)
 // method which returns the string converted to Postfix Polish notation
 string MainWindow::Parsing(QString s)
 {
-    string converted = s.toStdString();    
-    bool state;
+    string converted = s.toStdString();
     //if the string contains characters such as abcd and etc
-    Check(converted) ? state = 1 : state = 0;    
-    if (!state) {
+    if (!ProperSymbCheck(converted)) {
           converted = InsertValuesInsteadOfVars(converted);
     }
     converted = CheckForUnarMinus(converted);
@@ -741,9 +752,11 @@ QString MainWindow::ShortenStrForOperations(QString start)
 {
     QString res;
     for (int i = 0; i < start.size(); i++){
-        if (start[i] == 'S' || start[i] == 'C' || start[i] == 'T' || start[i] == 'E' || start[i] == 'R'
-                || start[i] == 'M' || start[i] == 'L' || start[i] == 'I'){
-            if (start[i] == 'L' && start[i + 1] != 'O'){
+        if (start[i] == 'S' || start[i] == 'C' || start[i] == 'T' || start[i] == 'E'
+                || start[i] == 'R' || start[i] == 'M' || start[i] == 'L' || start[i] == 'I')
+        {
+            if (start[i] == 'L' && start[i + 1] != 'O')
+            {
                 if (start[i + 1] == 'G')
                     res += 'O';
                 else if (start[i + 1] == 'N')
@@ -751,12 +764,14 @@ QString MainWindow::ShortenStrForOperations(QString start)
                 ++i;
                 continue;
             }
-            else if (start[i] == 'L' && start[i + 1] == 'O'){
+            else if (start[i] == 'L' && start[i + 1] == 'O')
+            {
                 res += 'J';
                 i += 2;
                 continue;
             }
-            else {
+            else
+            {
                 res += start[i];
                 i += 2;
                 continue;
@@ -789,7 +804,9 @@ void MainWindow::on_buttnEqual_clicked()
         currStr = ShortenStrForOperations(currStr);
 
     //if the string doesn't contain '=' and isn't empty and doesn't contain russian characters then we're fine
-    if (!currStr.contains('=') && !currStr.isEmpty() && !CheckIfContainsRusCharacters(currStr.toStdString()) && !ContainsSpaceAfterOperator(currStr.toStdString())){
+    if (!currStr.contains('=') && !currStr.isEmpty() && !CheckIfContainsRusCharacters(currStr.toStdString())
+            && !ContainsSpaceAfterOperator(currStr.toStdString()))
+    {
         string postFixNotation = Parsing(currStr); //getting postfix notation
         SequenceOfOperations w;                             //creating an object of the second window
         w.setWindowTitle("Последовательность операций");
@@ -815,7 +832,8 @@ void MainWindow::Digits()
             toCompare += 1;      
     }
 
-    if (prevNum.at(0) == '0' && !prevNum.contains('.')){          // delete first zero in the input string
+    if (prevNum.at(0) == '0' && !prevNum.contains('.'))
+    {          // delete first zero in the input string
         QString tmp;
         for (int i = 1; i < prevNum.size(); i++)
             tmp += prevNum.at(i);
@@ -874,60 +892,59 @@ void MainWindow::Operations()
     QPushButton *key = (QPushButton*)sender();
     key->setChecked(true);
 
-    if (ui->buttnPlus->isChecked()){
+    if (ui->buttnPlus->isChecked())
         Update(key, '+');
-    }
-    else if (ui->buttnMinus->isChecked()){
+
+    else if (ui->buttnMinus->isChecked())
         Update(key, '-');
-    }
-    else if (ui->buttnMulti->isChecked()){
+
+    else if (ui->buttnMulti->isChecked())
         Update(key, '*');
-    }
-    else if (ui->buttnDiv->isChecked()){
+
+    else if (ui->buttnDiv->isChecked())
         Update(key, '/');
-    }
-    else if (ui->buttnOpenBr->isChecked()){
+
+    else if (ui->buttnOpenBr->isChecked())
         Update(key, '(');
-    }
-    else if (ui->buttnClosingBr->isChecked()){
+
+    else if (ui->buttnClosingBr->isChecked())
         Update(key, ')');
-    }
-    else if (ui->buttnPow->isChecked()){
+
+    else if (ui->buttnPow->isChecked())
         Update(key, '^');
-    }
-    else if (ui->buttnDot->isChecked()){
+
+    else if (ui->buttnDot->isChecked())
         Update(key, '.');
-    }
-    else if (ui->buttnSin->isChecked()){
+
+    else if (ui->buttnSin->isChecked())
         UPD(key, "SIN");
-    }
-    else if (ui->buttnCos->isChecked()){
+
+    else if (ui->buttnCos->isChecked())
         UPD(key, "COS");
-    }
-    else if (ui->buttnTan->isChecked()){
+
+    else if (ui->buttnTan->isChecked())
         UPD(key, "TAN");
-    }
-    else if (ui->buttnExp->isChecked()){
+
+    else if (ui->buttnExp->isChecked())
         UPD(key, "EXP");
-    }
-    else if (ui->buttnRev->isChecked()){
+
+    else if (ui->buttnRev->isChecked())
         UPD(key, "REV");
-    }
-    else if (ui->buttnMod->isChecked()){
+
+    else if (ui->buttnMod->isChecked())
         UPD("MOD");
-    }
-    else if (ui->buttnLg->isChecked()){
+
+    else if (ui->buttnLg->isChecked())
         UPD(key, "LG");
-    }
-    else if (ui->buttnLog->isChecked()){
+
+    else if (ui->buttnLog->isChecked())
         UPD(key, "LOG");
-    }
-    else if (ui->buttnInt->isChecked()){
+
+    else if (ui->buttnInt->isChecked())
         UPD(key, "INT");
-    }
-    else if (ui->buttnLn->isChecked()){
+
+    else if (ui->buttnLn->isChecked())
         UPD(key, "LN");
-    }
 }
 
 void MainWindow::ClearVariables()

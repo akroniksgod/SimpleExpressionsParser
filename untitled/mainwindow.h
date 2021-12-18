@@ -39,7 +39,7 @@ private slots:
 
     bool IsOperator(char op);
     bool isDigit(char op);
-    bool Check(std::string result);
+    bool ProperSymbCheck(std::string result);
     int ReturnPriorityVal(char op);
     std::string CheckForUnarMinus(std::string start);
     std::string RemoveLastEl(std::string result);
