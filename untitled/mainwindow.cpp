@@ -223,7 +223,7 @@ string MainWindow::ToPostfixNotation(string s)
 }
 
 //declaring variables to work with expressions such as a+b-3,
-float a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, xV, yV, z;
+float a, b, c, d, e, f, g, h, iVar, j, k, l, m, n, o, p, q, r, s, t, u, v, w, xV, yV, z;
 string Astr, Bstr, Cstr, Dstr, Estr, Fstr, Gstr, Hstr, Istr, Jstr, Kstr, Lstr, Mstr, Nstr,
 Ostr, Pstr, Qstr, Rstr, Sstr, Tstr, Ustr, Vstr, Wstr, Xstr, Ystr, Zstr;
 
@@ -340,10 +340,10 @@ float MainWindow::GetValues()
     size = str.size();
     for (int i = 2; i < size; i++){
         if (i == 0)
-            i = st[i] - 48;
+            iVar = st[i] - 48;
         else{
-            i *= 10;
-            i += st[i] - 48;
+            iVar *= 10;
+            iVar += st[i] - 48;
         }
         Istr += st[i];
     }
@@ -949,7 +949,7 @@ void MainWindow::Operations()
 
 void MainWindow::ClearVariables()
 {
-    a = b = c = d = e = f = g = h = i = j = k = l = m = n = o = p = q = r = s = t = u = v = w = xV = yV = z = 0;
+    a = b = c = d = e = f = g = h = iVar = j = k = l = m = n = o = p = q = r = s = t = u = v = w = xV = yV = z = 0;
     Astr.clear(); Bstr.clear(); Cstr.clear(); Dstr.clear(); Estr.clear(); Fstr.clear(); Gstr.clear();
     Hstr.clear(); Istr.clear(); Jstr.clear(); Kstr.clear(); Lstr.clear(); Mstr.clear(); Nstr.clear();
     Ostr.clear(); Pstr.clear(); Qstr.clear(); Rstr.clear(); Sstr.clear(); Tstr.clear(); Ustr.clear();
