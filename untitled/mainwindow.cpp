@@ -227,347 +227,54 @@ float a, b, c, d, e, f, g, h, iVar, j, k, l, m, n, o, p, q, r, s, t, u, v, w, xV
 string Astr, Bstr, Cstr, Dstr, Estr, Fstr, Gstr, Hstr, Istr, Jstr, Kstr, Lstr, Mstr, Nstr,
 Ostr, Pstr, Qstr, Rstr, Sstr, Tstr, Ustr, Vstr, Wstr, Xstr, Ystr, Zstr;
 
+namespace RemoveGlobalVarsFromVision{
+    string ReturnValue(string RandStr, float temp, QString str)
+    {
+        //QString str = ui->aEquals->text();
+        string st = str.toStdString();
+        int size = str.size();
+        for (int i = 2; i < size; i++){
+            if (temp == 0)
+                temp = st[i] - 48;
+            else {
+                temp *= 10;
+                temp += st[i] - 48;
+            }
+            RandStr += st[i];
+        }
+        return RandStr;
+    }
+}
+
 //getting values to variables from the table
 float MainWindow::GetValues()
 {
-    QString str = ui->aEquals->text();
-    string st = str.toStdString();
-    int size = str.size();
-    for (int i = 2; i < size; i++){
-        if (a == 0)
-            a = st[i] - 48;
-        else {
-            a *= 10;
-            a += st[i] - 48;
-        }
-        Astr += st[i];
-    }
-
-    str = ui->bEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (b == 0)
-            b = st[i] - 48;
-        else{
-            b *= 10;
-            b += st[i] - 48;
-        }
-        Bstr += st[i];
-    }
-
-    str = ui->cEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++)
-    {
-        if (c == 0)
-            c = st[i] - 48;
-        else {
-            c *= 10;
-            c += st[i] - 48;
-        }
-        Cstr += st[i];
-    }
-
-    str = ui->dEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (d == 0)
-            d = st[i] - 48;
-        else{
-            d *= 10;
-            d += st[i] - 48;
-        }
-        Dstr += st[i];
-    }
-
-    str = ui->eEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (e == 0)
-            e = st[i] - 48;
-        else{
-            e *= 10;
-            e += st[i] - 48;
-        }
-        Estr += st[i];
-    }
-
-    str = ui->fEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (f == 0)
-            f = st[i] - 48;
-        else{
-            f *= 10;
-            f += st[i] - 48;
-        }
-        Fstr += st[i];
-    }
-
-    str = ui->gEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (g == 0)
-            g = st[i] - 48;
-        else{
-            g *= 10;
-            g += st[i] - 48;
-        }
-        Gstr += st[i];
-    }
-
-    str = ui->hEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (h == 0)
-            h = st[i] - 48;
-        else{
-            h *= 10;
-            h += st[i] - 48;
-        }
-        Hstr += st[i];
-    }
-
-    str = ui->iEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (i == 0)
-            iVar = st[i] - 48;
-        else{
-            iVar *= 10;
-            iVar += st[i] - 48;
-        }
-        Istr += st[i];
-    }
-
-    str = ui->jEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (j == 0)
-            j = st[i] - 48;
-        else{
-            j *= 10;
-            j += st[i] - 48;
-        }
-        Jstr += st[i];
-    }
-
-    str = ui->kEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (k == 0)
-            k = st[i] - 48;
-        else{
-            k *= 10;
-            k += st[i] - 48;
-        }
-        Kstr += st[i];
-    }
-
-    str = ui->lEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (l == 0)
-            l = st[i] - 48;
-        else{
-            l *= 10;
-            l += st[i] - 48;
-        }
-        Lstr += st[i];
-    }
-
-    str = ui->mEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (m == 0)
-            m = st[i] - 48;
-        else{
-            m *= 10;
-            m += st[i] - 48;
-        }
-        Mstr += st[i];
-    }
-
-    str = ui->nEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (n == 0)
-            n = st[i] - 48;
-        else{
-            n *= 10;
-            n += st[i] - 48;
-        }
-        Nstr += st[i];
-    }
-
-    str = ui->oEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (o == 0)
-            o = st[i] - 48;
-        else{
-            o *= 10;
-            o += st[i] - 48;
-        }
-        Ostr += st[i];
-    }
-
-    str = ui->pEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (p == 0)
-            p = st[i] - 48;
-        else{
-            p *= 10;
-            p += st[i] - 48;
-        }
-        Pstr += st[i];
-    }
-
-    str = ui->qEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (q == 0)
-            q = st[i] - 48;
-        else{
-            q *= 10;
-            q += st[i] - 48;
-        }
-        Qstr += st[i];
-    }
-
-    str = ui->rEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (r == 0)
-            r = st[i] - 48;
-        else{
-            r *= 10;
-            r += st[i] - 48;
-        }
-        Rstr += st[i];
-    }
-
-    str = ui->sEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (s == 0)
-            s = st[i] - 48;
-        else{
-            s *= 10;
-            s += st[i] - 48;
-        }
-        Sstr += st[i];
-    }
-
-    str = ui->tEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (t == 0)
-            t = st[i] - 48;
-        else{
-            t *= 10;
-            t += st[i] - 48;
-        }
-        Tstr += st[i];
-    }
-
-    str = ui->uEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (u == 0)
-            u = st[i] - 48;
-        else{
-            u *= 10;
-            u += st[i] - 48;
-        }
-        Ustr += st[i];
-    }
-
-    str = ui->vEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (v == 0)
-            v = st[i] - 48;
-        else{
-            v *= 10;
-            v += st[i] - 48;
-        }
-        Vstr += st[i];
-    }
-
-    str = ui->wEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (w == 0)
-            w = st[i] - 48;
-        else{
-            w *= 10;
-            w += st[i] - 48;
-        }
-        Wstr += st[i];
-    }
-
-    str = ui->xEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (xV == 0)
-            xV = st[i] - 48;
-        else{
-            xV *= 10;
-            xV += st[i] - 48;
-        }
-        Xstr += st[i];
-    }
-
-    str = ui->yEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (yV == 0)
-            yV = st[i] - 48;
-        else{
-            yV *= 10;
-            yV += st[i] - 48;
-        }
-        Ystr += st[i];
-    }
-
-    str = ui->zEquals->text();
-    st = str.toStdString();
-    size = str.size();
-    for (int i = 2; i < size; i++){
-        if (z == 0)
-            z = st[i] - 48;
-        else{
-            z *= 10;
-            z += st[i] - 48;
-        }
-        Zstr += st[i];
-    }
+    Astr = RemoveGlobalVarsFromVision::ReturnValue(Astr, a, ui->aEquals->text());
+    Bstr = RemoveGlobalVarsFromVision::ReturnValue(Bstr, b, ui->bEquals->text());
+    Cstr = RemoveGlobalVarsFromVision::ReturnValue(Cstr, c, ui->cEquals->text());
+    Dstr = RemoveGlobalVarsFromVision::ReturnValue(Dstr, d, ui->dEquals->text());
+    Estr = RemoveGlobalVarsFromVision::ReturnValue(Estr, e, ui->eEquals->text());
+    Fstr = RemoveGlobalVarsFromVision::ReturnValue(Fstr, f, ui->fEquals->text());
+    Gstr = RemoveGlobalVarsFromVision::ReturnValue(Gstr, g, ui->gEquals->text());
+    Hstr = RemoveGlobalVarsFromVision::ReturnValue(Hstr, h, ui->hEquals->text());
+    Istr = RemoveGlobalVarsFromVision::ReturnValue(Istr, iVar, ui->iEquals->text());
+    Jstr = RemoveGlobalVarsFromVision::ReturnValue(Jstr, j, ui->aEquals->text());
+    Kstr = RemoveGlobalVarsFromVision::ReturnValue(Kstr, k, ui->bEquals->text());
+    Lstr = RemoveGlobalVarsFromVision::ReturnValue(Lstr, l, ui->cEquals->text());
+    Mstr = RemoveGlobalVarsFromVision::ReturnValue(Mstr, m, ui->dEquals->text());
+    Nstr = RemoveGlobalVarsFromVision::ReturnValue(Nstr, n, ui->eEquals->text());
+    Ostr = RemoveGlobalVarsFromVision::ReturnValue(Ostr, o, ui->fEquals->text());
+    Pstr = RemoveGlobalVarsFromVision::ReturnValue(Pstr, p, ui->gEquals->text());
+    Qstr = RemoveGlobalVarsFromVision::ReturnValue(Qstr, q, ui->hEquals->text());
+    Rstr = RemoveGlobalVarsFromVision::ReturnValue(Rstr, r, ui->iEquals->text());
+    Sstr = RemoveGlobalVarsFromVision::ReturnValue(Sstr, s, ui->aEquals->text());
+    Tstr = RemoveGlobalVarsFromVision::ReturnValue(Tstr, t, ui->bEquals->text());
+    Ustr = RemoveGlobalVarsFromVision::ReturnValue(Ustr, u, ui->cEquals->text());
+    Vstr = RemoveGlobalVarsFromVision::ReturnValue(Vstr, v, ui->dEquals->text());
+    Wstr = RemoveGlobalVarsFromVision::ReturnValue(Wstr, w, ui->eEquals->text());
+    Xstr = RemoveGlobalVarsFromVision::ReturnValue(Xstr, xV, ui->fEquals->text());
+    Ystr = RemoveGlobalVarsFromVision::ReturnValue(Ystr, yV, ui->gEquals->text());
+    Zstr = RemoveGlobalVarsFromVision::ReturnValue(Zstr, z, ui->hEquals->text());
 }
 
 //checking if the string contains russian characters
