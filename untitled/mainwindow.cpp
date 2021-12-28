@@ -4,9 +4,9 @@
 #include <stack>
 using namespace std;
 
-size_t fontSize = 26; //declaring size of font
-size_t toCompare = 30; // size of the full string
-bool Deg = 1;
+size_t FONT_SIZE = 26; //declaring size of font
+size_t TO_COMPARE_FONT_SIZE = 30; // size of the full string
+bool DEG1_RAD0 = 1;
 
 //constr
 MainWindow::MainWindow(QWidget *parent)
@@ -73,7 +73,6 @@ MainWindow::MainWindow(QWidget *parent)
     on_DegOn_toggled(true);
     ui->buttnInv->setCheckable(true);
     ui->buttnExpand->setCheckable(true);
-
 }
 
 MainWindow::~MainWindow()
@@ -223,14 +222,14 @@ string MainWindow::ToPostfixNotation(string s)
 }
 
 //declaring variables to work with expressions such as a+b-3,
-float a, b, c, d, e, f, g, h, iVar, j, k, l, m, n, o, p, q, r, s, t, u, v, w, xV, yV, z;
+float a, b, c, d, e, f, g, h, iV, j, k, l, m, n, o, p, q, r, s, t, u, v, w, xV, yV, z;
 string Astr, Bstr, Cstr, Dstr, Estr, Fstr, Gstr, Hstr, Istr, Jstr, Kstr, Lstr, Mstr, Nstr,
 Ostr, Pstr, Qstr, Rstr, Sstr, Tstr, Ustr, Vstr, Wstr, Xstr, Ystr, Zstr;
 
-namespace RemoveGlobalVarsFromVision{
+namespace RemoveGlobalVarsFromVision
+{
     string ReturnValue(string RandStr, float temp, QString str)
     {
-        //QString str = ui->aEquals->text();
         string st = str.toStdString();
         int size = str.size();
         for (int i = 2; i < size; i++){
@@ -257,24 +256,24 @@ float MainWindow::GetValues()
     Fstr = RemoveGlobalVarsFromVision::ReturnValue(Fstr, f, ui->fEquals->text());
     Gstr = RemoveGlobalVarsFromVision::ReturnValue(Gstr, g, ui->gEquals->text());
     Hstr = RemoveGlobalVarsFromVision::ReturnValue(Hstr, h, ui->hEquals->text());
-    Istr = RemoveGlobalVarsFromVision::ReturnValue(Istr, iVar, ui->iEquals->text());
-    Jstr = RemoveGlobalVarsFromVision::ReturnValue(Jstr, j, ui->aEquals->text());
-    Kstr = RemoveGlobalVarsFromVision::ReturnValue(Kstr, k, ui->bEquals->text());
-    Lstr = RemoveGlobalVarsFromVision::ReturnValue(Lstr, l, ui->cEquals->text());
-    Mstr = RemoveGlobalVarsFromVision::ReturnValue(Mstr, m, ui->dEquals->text());
-    Nstr = RemoveGlobalVarsFromVision::ReturnValue(Nstr, n, ui->eEquals->text());
-    Ostr = RemoveGlobalVarsFromVision::ReturnValue(Ostr, o, ui->fEquals->text());
-    Pstr = RemoveGlobalVarsFromVision::ReturnValue(Pstr, p, ui->gEquals->text());
-    Qstr = RemoveGlobalVarsFromVision::ReturnValue(Qstr, q, ui->hEquals->text());
-    Rstr = RemoveGlobalVarsFromVision::ReturnValue(Rstr, r, ui->iEquals->text());
-    Sstr = RemoveGlobalVarsFromVision::ReturnValue(Sstr, s, ui->aEquals->text());
-    Tstr = RemoveGlobalVarsFromVision::ReturnValue(Tstr, t, ui->bEquals->text());
-    Ustr = RemoveGlobalVarsFromVision::ReturnValue(Ustr, u, ui->cEquals->text());
-    Vstr = RemoveGlobalVarsFromVision::ReturnValue(Vstr, v, ui->dEquals->text());
-    Wstr = RemoveGlobalVarsFromVision::ReturnValue(Wstr, w, ui->eEquals->text());
-    Xstr = RemoveGlobalVarsFromVision::ReturnValue(Xstr, xV, ui->fEquals->text());
-    Ystr = RemoveGlobalVarsFromVision::ReturnValue(Ystr, yV, ui->gEquals->text());
-    Zstr = RemoveGlobalVarsFromVision::ReturnValue(Zstr, z, ui->hEquals->text());
+    Istr = RemoveGlobalVarsFromVision::ReturnValue(Istr, iV, ui->iEquals->text());
+    Jstr = RemoveGlobalVarsFromVision::ReturnValue(Jstr, j, ui->jEquals->text());
+    Kstr = RemoveGlobalVarsFromVision::ReturnValue(Kstr, k, ui->kEquals->text());
+    Lstr = RemoveGlobalVarsFromVision::ReturnValue(Lstr, l, ui->lEquals->text());
+    Mstr = RemoveGlobalVarsFromVision::ReturnValue(Mstr, m, ui->mEquals->text());
+    Nstr = RemoveGlobalVarsFromVision::ReturnValue(Nstr, n, ui->nEquals->text());
+    Ostr = RemoveGlobalVarsFromVision::ReturnValue(Ostr, o, ui->oEquals->text());
+    Pstr = RemoveGlobalVarsFromVision::ReturnValue(Pstr, p, ui->pEquals->text());
+    Qstr = RemoveGlobalVarsFromVision::ReturnValue(Qstr, q, ui->qEquals->text());
+    Rstr = RemoveGlobalVarsFromVision::ReturnValue(Rstr, r, ui->rEquals->text());
+    Sstr = RemoveGlobalVarsFromVision::ReturnValue(Sstr, s, ui->sEquals->text());
+    Tstr = RemoveGlobalVarsFromVision::ReturnValue(Tstr, t, ui->tEquals->text());
+    Ustr = RemoveGlobalVarsFromVision::ReturnValue(Ustr, u, ui->uEquals->text());
+    Vstr = RemoveGlobalVarsFromVision::ReturnValue(Vstr, v, ui->vEquals->text());
+    Wstr = RemoveGlobalVarsFromVision::ReturnValue(Wstr, w, ui->wEquals->text());
+    Xstr = RemoveGlobalVarsFromVision::ReturnValue(Xstr, xV, ui->xEquals->text());
+    Ystr = RemoveGlobalVarsFromVision::ReturnValue(Ystr, yV, ui->yEquals->text());
+    Zstr = RemoveGlobalVarsFromVision::ReturnValue(Zstr, z, ui->zEquals->text());
 }
 
 //checking if the string contains russian characters
@@ -518,7 +517,7 @@ void MainWindow::on_buttnEqual_clicked()
         SequenceOfOperations w;                             //creating an object of the second window
         w.setWindowTitle("Последовательность операций");
         w.setModal(true);
-        float res = w.CalcByPostfixNotation(postFixNotation, Deg);           //getting the result of the expression
+        float res = w.CalcByPostfixNotation(postFixNotation, DEG1_RAD0);           //getting the result of the expression
         QString toWrite = QString::number(res);
         QString prev = ui->expr->text();
         prev += "=";
@@ -533,10 +532,10 @@ void MainWindow::Digits()
 {
     QPushButton *key = (QPushButton*)sender();
     QString prevNum = ui->expr->text() + key->text();    
-    QFont font ("Segoe UI", fontSize, QFont::Bold);
-    if (prevNum.size() > toCompare){      // if there are too many characters
-            --fontSize;                   // we make font smaller
-            toCompare += 1;      
+    QFont font ("Segoe UI", FONT_SIZE, QFont::Bold);
+    if (prevNum.size() > TO_COMPARE_FONT_SIZE){      // if there are too many characters
+            --FONT_SIZE;                   // we make font smaller
+            TO_COMPARE_FONT_SIZE += 1;
     }
 
     if (prevNum.at(0) == '0' && !prevNum.contains('.'))
@@ -546,7 +545,7 @@ void MainWindow::Digits()
             tmp += prevNum.at(i);
         prevNum = tmp;
     }    
-    font.setPointSize(fontSize);
+    font.setPointSize(FONT_SIZE);
     ui->expr->setFont(font);
     ui->expr->setText(prevNum);
 }
@@ -656,7 +655,7 @@ void MainWindow::Operations()
 
 void MainWindow::ClearVariables()
 {
-    a = b = c = d = e = f = g = h = iVar = j = k = l = m = n = o = p = q = r = s = t = u = v = w = xV = yV = z = 0;
+    a = b = c = d = e = f = g = h = iV = j = k = l = m = n = o = p = q = r = s = t = u = v = w = xV = yV = z = 0;
     Astr.clear(); Bstr.clear(); Cstr.clear(); Dstr.clear(); Estr.clear(); Fstr.clear(); Gstr.clear();
     Hstr.clear(); Istr.clear(); Jstr.clear(); Kstr.clear(); Lstr.clear(); Mstr.clear(); Nstr.clear();
     Ostr.clear(); Pstr.clear(); Qstr.clear(); Rstr.clear(); Sstr.clear(); Tstr.clear(); Ustr.clear();
@@ -709,11 +708,11 @@ void MainWindow::on_buttnBackspace_clicked()
     ui->statusbar->clearMessage();
 
     QString curr = ui->expr->text();
-    QFont font ("Segoe UI", fontSize, QFont::Bold);
-    if (toCompare > 30 && curr.size() < toCompare){
-        ++fontSize;
-        toCompare -= 1;
-        font.setPointSize(fontSize);
+    QFont font ("Segoe UI", FONT_SIZE, QFont::Bold);
+    if (TO_COMPARE_FONT_SIZE > 30 && curr.size() < TO_COMPARE_FONT_SIZE){
+        ++FONT_SIZE;
+        TO_COMPARE_FONT_SIZE -= 1;
+        font.setPointSize(FONT_SIZE);
         ui->expr->setFont(font);
     }
     ClearVariables();
@@ -722,13 +721,13 @@ void MainWindow::on_buttnBackspace_clicked()
 // the event is for swithcing degrees button on
 void MainWindow::on_DegOn_toggled(bool checked)
 {
-    Deg = true;
+    DEG1_RAD0 = true;
 }
 
 // the event is for swithcing radians button on
 void MainWindow::on_RadOn_toggled(bool checked)
 {
-    Deg = false;
+    DEG1_RAD0 = false;
 }
 
 const int EXPAND_VARS_WIND = 1248,
